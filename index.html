@@ -1,0 +1,832 @@
+<div class=goyf>B"H</div><br>
+<script src="adan.js"></script>
+<script>
+
+var g = new WebSocket
+//("ws://etzem.herokuapp.com")
+("ws://localhost:770")
+Sayfor.yasharKoyach({
+	bayis: {
+		toldos: [
+			"<br>",
+			"<br>",
+			{
+				tag: "button",
+				
+				onclick() {
+					Sayfor.koyray("bayiss")
+				},
+				innerHTML: "Bayiss?"
+			},
+			"<br>",
+			"<br>",
+		]
+	},
+	rentobuy: {
+		toldos: [
+
+			{
+				style: {
+					//display:"inline"
+					position:"absolute",
+					left: 8,
+					top: 8
+				},
+				innerHTML: "Rent-O-Buy",
+				tag: "h1",
+				className: "smoyl rent"
+			},
+			"<br>",
+			Sayfor.koychoyss.bayis,
+			"<br>",
+			"<br>",
+		]
+	}
+})
+Sayfor.shtarify({
+	bayiss: {
+		koyrayd(c) {
+			if(
+				!Sayfor.koychoyss.shaym
+			) {
+				if(
+					localStorage.soyd
+				) {
+				g.shawlawch({
+					Jewsur: {
+						soyd: localStorage.soyd,
+						daf: "bayiss"
+					}
+				})
+				} else {
+					Sayfor
+					.goofeem["eeCar"]
+					.innerHTML
+					= ""
+					
+					Sayfor
+					.migawleh = "gawshmeeus"
+					
+					Sayfor
+					.hawstayr = "roochneeoys"
+				}
+			} else {
+				Sayfor
+				.goofeem["eeCar"]
+				.innerHTML
+				= Sayfor.koychoyss.shaym
+				
+				Sayfor
+				.hawstayr = "gawshmeeus"
+				
+				Sayfor
+				.migawleh = "roochneeoys"
+			}
+			
+			if(
+				!Sayfor
+				.koychoyss
+				.hoyvehGeeloy
+			) {
+				g.shawlawch({
+					kachGeeloyeem: {
+						awd: 4
+					}
+				})
+			} else {
+				Sayfor
+				.migawleh = "geelooyyeem"
+			}
+			
+		},
+		toldos: [
+			{
+				tag: "style",
+				innerText: "body{font-family:Helvetica;text-align:center}" +
+				".goyf{float:left}" +
+				".chayz{list-style-type:none}"
+				+ `
+					.smoyl {
+						float: left;
+						display:inline-block
+					}
+					
+					.things {
+						list-style: none
+					}
+					
+					.yameen {
+						float: right
+					}
+					
+					.rent {
+						color:#0c88af
+					}
+					
+					
+					.btn {
+						padding: 5px;
+						border: 1px solid black;
+						background: cyan;
+						user-select:none;
+						display:inline-block
+					}
+					
+					
+					
+					.btn:hover {
+						background: #afffff;
+						cursor: pointer
+					}
+					
+					.btn:active {
+						color: white;
+						background: #1f8888;
+					}
+					
+				`
+			//+	".chayz li{padding:5px;background:cyan}"
+		//	+	".chayz li:hover{background:dark-blue}"
+			},
+			Sayfor.koychoyss.rentobuy,
+			"<br>",
+			"<br>",
+			"<br>",
+			{
+				innerHTML: "Hi ",
+				className: "yameen",
+				toldos: [
+					{
+						tag: "span",
+						shaym: "eeCar"
+					},
+					{
+						shaym: "roochneeoys",
+						hester: true,
+						toldos: [
+							{
+								tag: "button",
+								innerHTML: 
+								"Hoyseef Geeloy Chawdash? " +
+								"<br>(Add new post?!)",
+								onclick() {
+									Sayfor.koyray
+									("hoyseefGeeloy")
+								}
+							},
+							{
+								tag: "button",
+								innerHTML: 
+								"Neechnaws to Haychawl?" +
+								" <br>(go to profile)",
+								onclick() {
+									Sayfor.koyray
+									("loygd")
+								}
+							},
+							
+							{
+								tag: "button",
+								innerHTML: 
+								"Yoytzay?! <br>(Log out?)",
+								onclick() {
+									g.shawlawch({
+										yoytzay: {
+											soyd: localStorage
+											.soyd,
+											daf: "bayiss"
+										}
+									})
+								}
+								
+							}
+						]
+					},
+					{
+						shaym: "gawshmeeus",
+						toldos: [
+							{
+								tag: "button",
+								innerHTML: 
+								"Boyray (create) account?",
+								onclick() {
+									Sayfor.koyray
+									("boyrayrah")
+								}
+							},
+							"<br>",
+							{
+								tag: "button",
+								innerHTML: 
+								"Neechnawss " +
+								"(login) to account?!",
+								onclick() {
+									Sayfor.koyray
+									("loygin")
+								}
+							}
+						]
+					},
+				]
+			},
+			"<br>",
+			"<br>",
+			"<br>",
+			{
+				tag: "h2",
+				innerHTML: "geelooyeem <br> [posts]",
+				toldos: [
+					{
+						shaym: "geelooyyeem",
+						tag: "ui",
+						className: "things",
+						migawleh(a) {
+							
+							if(
+								Sayfor
+								.koychoyss
+								.hoyvehGeelooyeem
+							) {
+								
+								a.innerHTML = ""
+								
+								Sayfor
+								.koysayvShtar({
+									av: a,
+									toldos: Sayfor
+									.koychoyss
+									.hoyvehGeelooyeem
+									.map(x => 
+										({
+											tag: "li",
+											toldah: {
+												innerHTML: 
+												x.shaym,
+												tag: "h5",
+												className: "btn"
+											},
+											onclick() {
+												Sayfor
+												.koyray(
+													"geelooy",
+													{
+														kayleem:
+														x._id
+													}
+												)
+											}
+										})
+									)
+								})
+								
+								console.log(Sayfor
+									.koychoyss
+									.hoyvehGeelooyeem)
+								Sayfor
+								.koychoyss
+								.hoyvehGeelooyeem
+								= null
+								
+							}
+						}
+					}
+				]
+			}
+			
+		]
+	},
+	hoyseefGeeloy: {
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+			Sayfor.koychoyss.bayis,
+			{
+				innerHTML: 
+				"Yo, this is the place to add a new post"
+			},"<br>",
+			{
+				hester: true,
+				style: {
+					color: "red"
+				},
+				shaym: "chayfetzErorr"
+			},
+			{
+				tag: "input",
+				style: {
+					width: 300
+				},
+				placeholder:
+				"Put the shaym [name] of the chayfetz [item] ",
+				shaym: "chayfetzShaym"
+			},
+			"<br>","<br>",
+			{
+				tag: "textarea",
+				placeholder: 
+				"Tell us a little about the chayfetz",
+				shaym: "chayfetzBeeor",
+				rows: 15,
+				cols:45
+			},"<br>","<br>","<br>",
+			{
+				innerHTML:
+				"What purpose is it posted for?"
+			},"<br>","<br>",
+			{
+				style: {
+					width: "50%",
+					textAlign: "right"
+				},
+				tag: "form",
+				shaym: "rdz",
+				toldos: [
+				{
+					innerHTML: "Rent: ",
+					tag:"label",
+					
+					attr: {
+						for: "rob0"
+					}
+				},
+				{
+					tag: "input",
+					type: "radio",
+					name: "rob",
+					checked:true,
+					id: "rob0",
+					value: 1
+				},"<br>",
+				{
+					innerHTML: "Buy: ",
+					tag:"label",
+					attr: {
+						for: "rob1"
+					}
+				},
+				{
+					tag: "input",
+					type: "radio",
+					name: "rob",
+					id: "rob1",
+					value: 2
+				},"<br>",
+				{
+					innerHTML: 
+					"Rent with the option to buy: ",
+					tag:"label",
+					attr: {
+						for: "rob2"
+					}
+				},
+				{
+					tag: "input",
+					type: "radio",
+					name: "rob",
+					id: "rob2",
+					value: 3
+				},"<br>",
+				]
+			},"<br>","<br>",
+			{
+				innerHTML: "Add some tags, separated by" +
+					" commas"
+			},"<br>",
+			{
+				tag: "input",
+				style: {
+					width: 365
+				},
+				shaym: "chayfetzMeedoys",
+				placeholder:
+				"Moshiach, now, we don't want, to wait[...]"
+			},"<br>","<br>","<br>",
+			{
+				innerHTML: 
+				"Hoyseef kivar!? <br> (add it already?!)",
+				tag: "Button",
+				onclick() {
+					var n = Sayfor
+						.goof("chayfetzShaym")
+						.value,
+						dc = Sayfor
+						.goof("chayfetzBeeor")
+						.value
+						
+					var typ;
+					Array.from(Sayfor
+					.goof("rdz")
+					.elements)
+					.forEach(r => 
+						(r.checked ?
+						typ = r.value  :0)
+					)
+					if(typ) typ = parseInt(typ)
+					
+					var toygStr = Sayfor
+						.goof("chayfetzMeedoys")
+						.value || "",
+						tgz = toygStr
+							.split(",")
+							.filter(x=>x)
+					
+					if(!(
+						n && dc
+					)) {
+						Sayfor
+						.goof("chayfetzErorr")
+						.innerHTML = 
+						"Yo, make sure to put in the "
+						
+						Sayfor.migawleh = 
+						"chayfetzErorr"
+						
+						setTimeout(function() {
+							Sayfor.hawstayr = 
+							"chayfetzErorr"
+						}, 3000)
+						var d = false
+						if(!n) {
+							Sayfor
+							.goof("chayfetzErorr")
+							.innerHTML += 
+							"shaym "
+						
+							d = true
+						}
+						if(!dc) {
+							Sayfor
+							.goof("chayfetzErorr")
+							.innerHTML += 
+							(d ? " and" : "")
+							+" description"
+						}
+						
+						return;
+					}
+					
+					g.shawlawch({
+						hoyseefMecheerah: {
+							description: 
+							dc,
+							
+							shaym:
+							n,
+							
+							tags:
+							tgz,
+							
+							meen:
+							typ,
+							
+							daf: 
+							
+							""
+						}
+					})
+					console.log(typ, tgz)
+					
+				}
+			}
+		]
+	},
+	
+	geelooy: {
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+			
+			Sayfor.koychoyss.bayis,
+		],
+		koyrayd(a) {
+			var k = Sayfor
+				.sefeeros.kayleem
+				
+			if(
+				!Sayfor
+				.koychoyss
+				.curKayleem
+			) {
+				g.shawlawch({
+					getKayleemPrateem: {
+						_id: k,
+						daf: "geelooy"
+					}
+				})
+			}
+			Sayfor
+			.koysayvShtar({
+				av: a,
+				toldos: [
+					{
+						innerHTML: 
+						k ? 
+						"Here is the Geeloy"
+						: "This Geeloy is hidden" + 
+							"<br>(couldn't find post)"
+					}
+				]
+			})
+			
+		}
+	},
+	loygin: {
+		innerHTML:"Wow, now it's time to joyn",
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+
+			{
+				innerHTML: "Just enter the things",
+				toldos: [
+					"<br>",
+					{
+						tag: "input",
+						shaym: "s",
+						placeholder: "shaym!?"
+					},
+					{
+						tag: "input",
+						shaym: "ps",
+						placeholder: "soyd!?"
+					},"<br>",
+					{
+						tag: "button",
+						innerHTML: "GO",
+						onclick() {
+							var nm = Sayfor.goofeem["s"],
+								ps = Sayfor.goofeem["ps"]
+							
+							g.shawlawch({
+								login: {
+									shaym: nm.value,
+									pass: ps.value
+								}
+							})
+						}
+					},
+				]
+			},
+			{
+				shaym: "oyrayrlg",
+				style: {
+					color: "red"
+				}
+			}
+		]
+	},
+	boyrayrah: {
+		innerHTML: "Welcome",
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+			Sayfor.koychoyss.bayis,
+			{
+				innerHTML: "What account do you want to make?!",
+				toldos: [
+					"<br>",
+					{
+						tag: "input",
+						shaym: "shaym",
+						placeholder: "Shaym here"
+						
+					},
+					{
+						tag: "input",
+						shaym: "soyd",
+						placeholder: "Soyd here"
+						
+					},"<br>",
+					{
+						tag: "button",
+						innerHTML: "Go(y)?",
+						onclick() {
+							var nm = Sayfor.goofeem["shaym"],
+								sd = Sayfor.goofeem["soyd"]
+								
+							g
+							.shawlawch({
+								boyrayAccount: {
+									shaym: nm.value,
+									soyd: sd.value
+								}
+							})
+						}
+						
+					}
+					
+				]
+			}
+		]
+	},
+	boyrayd: {
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+			Sayfor.koychoyss.bayis,
+			{
+				innerHTML: "you did it?!"
+			}
+		]		
+	},
+	loygd: {
+		
+		koyrayd(c) {
+			if(
+				!Sayfor.koychoyss.shaym
+			) {
+				if(
+					localStorage.soyd
+				)
+				g.shawlawch({
+					Jewsur: {
+						soyd: localStorage.soyd,
+						daf: "loygd"
+					}
+				})
+			}
+			Sayfor.migawleh = "pShaym"
+		},
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+			Sayfor.koychoyss.bayis,
+			{
+				shaym: "pShaym",
+				alMigawleh(a) {
+				
+					console.log("OK",
+					Sayfor.koychoyss,a)
+					if(Sayfor.koychoyss.shaym) {
+						a
+						.innerHTML =
+						Sayfor.koychoyss.shaym
+					}
+				}
+			},
+			"<br>",
+			{
+				innerHTML:
+				"Hoyseef Chaydyor " +
+				"biRishooys Harawbeem?!",
+				tag: "button",
+				onclick() {
+					Sayfor.koyray("hoyseefiss")
+					
+				}
+			},
+		]
+	},
+	hoyseefiss: {
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+			{
+				tag: "button",
+				onclick() {
+					Sayfor.koyray("loygd")
+				},
+				innerHTML: "Haychawl?"
+			},"<br>","<br>",
+			{
+				tag: "input",
+				shaym: "chaydorShaym"
+			},"<br>","<br>",
+			{
+				innerHTML: 
+				"Actually Hoyseef Chaydor?!",
+				tag: "button",
+				onclick() {
+					g.shawlawch({
+						hoyseefChaydor: {
+							daf: "bayiss",
+							shaym: 
+							Sayfor
+							.goofeem[
+								"chaydorShaym"
+							].value
+						}
+					})
+				}
+			}
+			
+			
+		]
+	},
+	successPost: {
+		toldos: [
+			Sayfor.koychoyss.rentobuy,
+			Sayfor
+			.koychoyss
+			.bayis,
+			{
+				innerHTML: "You actually added it?!"
+			},
+			{
+				siyum(a) {
+					if(
+						Sayfor
+						.koychoyss
+						.justAdded
+					) {
+						a.innerHTML =
+						Sayfor.koychoyss.justAdded
+					}
+				}
+			}
+		]
+	}
+})
+
+
+g.shoymayuh({
+	kachGeeloyeem(m) {
+		
+		if(m.naytawch) {
+			console.log(m)
+			Sayfor
+			.koychoyss
+			.hoyvehGeelooyeem =
+			m.naytawch
+			
+			Sayfor.migawleh = "geelooyyeem"
+		}
+	},
+	hoyseefMecheerah(m) {
+		if(m.oyrayr) {
+			Sayfor
+			.goof("chayfetzErorr")
+			.innerHTML = 
+			m.oyrayr
+			
+			Sayfor.migawleh = 
+			"chayfetzErorr"
+			
+			setTimeout(function() {
+				Sayfor.hawstayr = 
+				"chayfetzErorr"
+			}, 3000)
+			return
+		}
+		if(m.naytzach) {
+			Sayfor
+			.koychoyss
+			.justAdded = m.naytzach
+			
+			Sayfor.koyray("successPost")
+		}
+	},
+	dayuh(m) {
+		if(m.naytzach != null) {
+			Sayfor.koychoyss.shaym = 
+				m.naytzach.username;
+			Sayfor.koyray(m.daf)
+		} else {
+		//	Sayfor.koyray("bayiss")
+		}
+	},
+	chaydoorHoyseeft(m) {
+		console.log("Chay?",m)
+		Sayfor.koyray(m.daf)
+	},
+	yawtzah(m) {
+		delete localStorage.soyd
+		delete Sayfor.koychoyss.shaym
+		if(m.daf)
+			Sayfor.koyray(m.daf)
+		console.log("OK",m)
+	},
+	chaydooreem(m) {
+		if(
+			m
+			.chaydooyreem
+		) {
+			Sayfor
+			.koychoyss
+			.gotChaydorz = 
+			m.chaydooyreem
+			
+			Sayfor.koyray(m.daf)
+		}
+		
+	},
+	isShlawcht(m) {
+		console.log(m)
+		if(m.oyrayr) {
+			Sayfor.goofeem["oyrayrlg"].innerHTML = m.oyrayr
+			setTimeout(function() {
+				Sayfor.goofeem["oyrayrlg"].innerHTML = ""
+			}, 3000)
+		} else {
+			localStorage.soyd = m.naytzawch
+			Sayfor.koyray(m.daf || "loygd")
+		}
+		
+	},
+	back(m) {
+		console.log(" OY ", m)
+	},
+	boyrayd(m) {
+		Sayfor.koyray("boyrayd")
+	},
+	wow(m) {
+		console.log(m,2)
+	},
+	opened(m) {
+		
+	}
+})
+</script>
